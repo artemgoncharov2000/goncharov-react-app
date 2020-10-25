@@ -46,11 +46,11 @@
     left: 16px;
     min-width: 400px;
     max-width: 400px;
-    min-height: 170px;
-    max-height: 170px;
+    min-height: 150px;
+    max-height: 150px;
     resize: none;
-    border-radius: 0;
-    border-color: #ACABAB;
+    border: none;
+
 }
 
 /* footer */
@@ -59,7 +59,6 @@
 
     width: 437px;
     height: 88px;
-
 
 }
 
@@ -70,6 +69,8 @@
     border-radius: 15px;
     border: none;
     background-color: rgb(219, 76, 63);
+
+    font-weight: bolder;
     color: white;
     text-align: center;
     top: 50%;

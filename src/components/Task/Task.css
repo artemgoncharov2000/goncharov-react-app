@@ -11,69 +11,104 @@
 /* header */
 
 .header {
+    position: relative;
     height: 30px;
     background-color: rgb(219, 76, 63);
 
 }
 .id {
-    width: 10%;
-    height: 100%;
-    display: inline-flex;
+    position: absolute;
+    top: 13px;
+    left: 8px;
+
+    width: 42px;
+    height: 45px;
+
+
+
     color: white;
-    float: left;
-    align-items: center;
-    justify-content: center;
+    font-weight: bold;
+    font-size: 30px;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 45px;
 }
 
 .name {
-    width: 90%;
-    height: 100%;
-    display: inline-flex;
+    position: absolute;
+    top: 13px;
+    right: 60px;
+
+    width: 298px;
+    height: 45px;
+
+    font-weight: bold;
+    font-size: 30px;
     color: white;
-    align-items: center;
-    justify-content: center;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 45px;
 }
 
 /* body */
 .body {
+    position: relative;
     width: 400px;
-    text-align: left;
+
 }
 
 .description {
-    display: flex;
-    padding: 10px 10px;
+    position: absolute;
+    top: 16px;
+    left:  25px;
+
+    width: 386px;
+    height: 182px;
+
+    text-align: left;
 
 }
 
 /* footer */
 .footer {
-    position: absolute;
-    bottom: 0;
-    width: 400px;
-    height: 30px;
+    position: relative;
+
+    width: 437px;
+    height: 88px;
+    border-top-style: solid;
+    border-top-width: thin;
+    border-color: #ACABAB;
 }
 
 .status {
-    display: inline-flex;
-    width: 70%;
-    height: 100%;
-    align-items: center;
+    position: absolute;
+    top: 18px;
+    left: 20px;
+
+    width: 208px;
+    height: 50px;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 50px;
     
-    border-top-style: solid;
-    border-top-width: thin;
+
 }
-.done-button {
-    width: 30%;
-    height: 100%;
-    float: right;
+.doneButton {
+    position: absolute;
+    top: 18px;
+    right: 19px;
+    width: 137px;
+    height: 49px;
+
+    border-radius: 15px;
     border: none;
     background-color: rgb(219, 76, 63);
     cursor: pointer;
 
     color: white;
+    font-weight: bolder;
     text-align: center;
     text-decoration: none;
-    display: inline-block;
+
 }
 

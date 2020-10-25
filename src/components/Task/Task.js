@@ -24,11 +24,11 @@ class Task extends React.Component {
                     <div className='name'>{this.props.task.name}</div>
                 </div>
                 <div className="body">
-                    <div className='description'>{this.props.task.description}</div>
+                    <p className="description">{this.props.task.description}</p>
                 </div>
                 <div className="footer">
-                    <div className='status'> Status: {this.props.task.completed ? 'completed' : 'not completed'}</div>
-                    <button className='done-button' onClick={this.handleClick}>Done!</button>
+                    <div className='status'>{this.props.task.completed ? 'Completed' : 'Not completed'}</div>
+                    <button className='doneButton' onClick={this.handleClick}>Done!</button>
                 </div>
             </div>
         )

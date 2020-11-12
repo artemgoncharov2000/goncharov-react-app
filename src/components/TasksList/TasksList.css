@@ -1,5 +1,6 @@
 .tasks-container {
     position: absolute;
+    font-family: 'Hind Guntur', sans-serif;
     width: 500px;
     height: 100%;
     top: 50%;

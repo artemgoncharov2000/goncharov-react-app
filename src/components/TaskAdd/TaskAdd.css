@@ -1,0 +1,81 @@
+.container {
+    position: relative;
+    width: 437px;
+    height: 347px;
+    border-style: solid;
+    border-color: #ACABAB;
+    border-width: thin;
+    margin-bottom: 20px;
+    border-radius: 10px;
+
+}
+/* header */
+
+.header {
+    position: relative;
+
+    border-radius: 10px 10px 0 0;
+    width: 437px;
+    height: 70px;
+    background-color: rgb(219, 76, 63);
+
+
+}
+.nameInput {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    display: block;
+
+    border-radius: 10px;
+    border-style: none;
+    width: 400px;
+    height: 38px;
+}
+
+/* body */
+.body {
+    position: relative;
+    width: 400px;
+    height: 190px;
+}
+
+.descriptionTextArea {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    min-width: 400px;
+    max-width: 400px;
+    min-height: 150px;
+    max-height: 150px;
+    resize: none;
+    border: none;
+
+}
+
+/* footer */
+.footer {
+    position: relative;
+
+    width: 437px;
+    height: 88px;
+
+}
+
+.addButton {
+    position: absolute;
+    width: 137px;
+    height: 49px;
+    border-radius: 15px;
+    border: none;
+    background-color: rgb(219, 76, 63);
+
+    font-weight: bolder;
+    color: white;
+    text-align: center;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+}

@@ -1,5 +1,8 @@
 import React from 'react'
-import './TaskAdd.css'
+import classNames from 'classnames/bind'
+import styles from './TaskAdd.module.scss'
+
+const cx = classNames.bind(styles)
 
 class TaskAdd extends React.Component {
 
@@ -45,27 +48,27 @@ class TaskAdd extends React.Component {
 
     render() {
         return (
-            <div className="container">
-                <form onSubmit={this.handleSubmit} className="createNewTask">
-                    <div className="header">
+            <div className={cx('container')}>
+                <form  className={cx('createNewTask')} onSubmit={this.handleSubmit}>
+                    <div className={cx('header')}>
                             <input
-                                className="nameInput"
+                                className={cx('nameInput')}
                                 value={this.state.name}
                                 placeholder="Enter the name of your task"
                                 onChange={this.handleNameChange}
                                 type="text"
                             />
                     </div>
-                    <div className="body">
+                    <div className={cx('body')}>
                         <textarea
-                            className="descriptionTextArea"
+                            className={cx('textArea')}
                             placeholder="Enter the description of your task"
                             value={this.state.description}
                             onChange={this.handleDescriptionChange}
                         />
                     </div>
-                    <div className="footer">
-                        <button className="addButton" type="submit">Add</button>
+                    <div className={cx('footer')}>
+                        <button className={cx('addButton')} type="submit">Add</button>
                     </div>
 
                 </form>

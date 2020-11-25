@@ -1,12 +1,18 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
-import TasksList from "./components/TasksList/TasksList";
+import {TasksList} from "./components/TasksList/TasksList";
+import {createStore} from "redux";
+import {rootReducer} from "./reducers";
+import {Provider} from 'react-redux'
+
+const store = createStore(rootReducer)
+
 function App() {
   return (
     <div className="App">
-
-        <TasksList/>
+        <Provider store={store}>
+            <TasksList/>
+        </Provider>
     </div>
   );
 }

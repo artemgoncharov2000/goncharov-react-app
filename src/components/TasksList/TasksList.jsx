@@ -7,69 +7,23 @@ import { connect } from "react-redux";
 
 const cx = classNames.bind(styles)
 
-// class TasksList extends React.Component {
-//
-//     constructor(props) {
-//         super(props)
-//         this.state = {
-//             tasks: []
-//         }
-//         this.setCompleted = this.setCompleted.bind(this)
-//         this.addNewTask = this.addNewTask.bind(this)
-//     }
-//
-//     setCompleted(updatedTask, index) {
-//         let updatedTasks = [...this.state.tasks]
-//         updatedTasks[index] = updatedTask
-//
-//         this.setState(() => ({
-//             tasks: updatedTasks
-//         }))
-//     }
-//
-//     addNewTask(newTask) {
-//         this.setState(prevState => ({
-//             tasks: [...prevState.tasks, newTask]
-//         }))
-//     }
-//
-//     render() {
-//         return (
-//             <div className={cx('container')}>
-//                 {this.state.tasks.map((it, i) => (
-//                     <Task
-//                         setCompleted={this.setCompleted}
-//                         key={i}
-//                         index={i}
-//                         task={it}
-//                     />
-//                 ))}
-//                 <TaskAdd addNewTask={this.addNewTask} tasks={this.state.tasks}/>
-//             </div>
-//
-//         )
-//     }
-// }
-
 const mapStateToProps = (state) => ({
-    tasks: state.tasks.tasks
+    tasksList: state.tasksList.tasksList
 })
 
-const TasksListComponent = ({tasks}) => {
-
+const TasksListComponent = ({tasksList}) => {
     return (
         <div className={cx('container')}>
             {
-                tasks.map((it, i) => (
+                tasksList.map((task, i) => (
                 <Task
                     key={i}
+                    task={task}
                 />
             ))}
             <TaskAdd/>
         </div>
     )
 }
-
-//export default TasksList
 
 export const TasksList = connect(mapStateToProps)(TasksListComponent)

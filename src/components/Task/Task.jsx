@@ -1,87 +1,40 @@
 import React from 'react'
 import classNames from 'classnames/bind'
 import styles from './Task.module.scss'
-import {setCompleted} from "../../actions/setCompleted";
+import {updateTask} from "../../actions/updateTask";
 import {connect} from "react-redux";
 
 const cx = classNames.bind(styles)
 
-// class Task extends React.Component {
-//
-//     constructor(props) {
-//         super(props)
-//         this.handleClick = this.handleClick.bind(this)
-//     }
-//
-//     handleClick() {
-//         let updatedTask = {...this.props.task}
-//         let completed = this.props.task.completed
-//         updatedTask.completed = !completed
-//
-//         this.props.setCompleted(updatedTask, this.props.index)
-//     }
-//
-//     render() {
-//         return (
-//             <div className={cx('container')}>
-//                 <div className={cx('header')}>
-//                     <div className={cx('id')}>{this.props.task.id}</div>
-//                     <div className={cx('name')}>{this.props.task.name}</div>
-//                 </div>
-//                 <div className={cx('body')}>
-//                     <p className={cx('description')}>{this.props.task.description}</p>
-//                 </div>
-//                 <div className={cx('footer')}>
-//                     <div className={cx('status')}>{this.props.task.completed ? 'Completed' : 'Not completed'}</div>
-//                     <button className={cx('doneButton')} onClick={this.handleClick}>Done!</button>
-//                 </div>
-//             </div>
-//         )
-//     }
-//
-// }
-//
-// export default Task;
-const mapStateToProps = (state) => ({
-    id: state.task.id,
-    name: state.task.name,
-    description: state.task.description,
-    completed: state.task.completed
-})
-
 const mapDispatchToProps = (dispatch) => ({
-    dispatchOnStatusChange: (updatedTask) => dispatch(setCompleted(updatedTask))
+    dispatchOnStatusChange: (updatedTask) => dispatch(updateTask(updatedTask))
 })
 
 const TaskComponent = ({
-                           id,
-                           name,
-                           description,
-                           completed,
+                           task,
                            dispatchOnStatusChange
                        }) => {
-
     const onStatusChange = (e) => {
         e.preventDefault()
         dispatchOnStatusChange({
-            id: id,
-            name: name,
-            description: description,
-            completed: !completed
+            id: task.id,
+            name: task.name,
+            description: task.description,
+            completed: !task.completed
         })
     }
 
     return (
         <div className={cx('container')}>
             <div className={cx('header')}>
-                <div className={cx('id')}>{id}</div>
-                <div className={cx('name')}>{name}</div>
+                <div className={cx('id')}>{task.id + 1}</div>
+                <div className={cx('name')}>{task.name}</div>
             </div>
             <div className={cx('body')}>
-                <p className={cx('description')}>{description}</p>
+                <p className={cx('description')}>{task.description}</p>
             </div>
             <div className={cx('footer')}>
-                <div className={cx('status')}>{completed ? 'Completed' : 'Not completed'}</div>
+                <div className={cx('status')}>{task.completed ? 'Completed' : 'Not completed'}</div>
                 <button className={cx('doneButton')} onClick={onStatusChange}>Done!</button>
             </div>
         </div>
@@ -89,4 +42,4 @@ const TaskComponent = ({
 
 }
 
-export const Task = connect(mapStateToProps, mapDispatchToProps)(TaskComponent)
+export const Task = connect(null, mapDispatchToProps)(TaskComponent)

@@ -7,69 +7,8 @@ import { connect } from "react-redux";
 
 const cx = classNames.bind(styles)
 
-// class TaskAdd extends React.Component {
-//
-//     constructor(props) {
-//         super(props);
-//         this.state = {
-//             name: '',
-//             description: ''
-//         }
-//
-//         this.handleNameChange = this.handleNameChange.bind(this)
-//         this.handleDescriptionChange = this.handleDescriptionChange.bind(this)
-//         this.handleSubmit = this.handleSubmit.bind(this)
-//     }
-//
-//     handleNameChange(event) {
-//         const val = event.target.value
-//         this.setState(() => ({
-//             name: val
-//         }))
-//     }
-//
-//     handleDescriptionChange(event) {
-//         const val = event.target.value
-//         this.setState(() => ({
-//             description: val
-//         }))
-//     }
-//
-//     handleSubmit(event) {
-//         event.preventDefault()
-//         useDispatch(addNewTask(
-//             {
-//                 id: this.props.tasks.length + 1,
-//                 name: this.state.name,
-//                 description: this.state.description,
-//                 completed: false
-//             }
-//         ))
-//         // this.props.addNewTask({
-//         //     id: this.props.tasks.length + 1,
-//         //     name: this.state.name,
-//         //     description: this.state.description,
-//         //     completed: false
-//         // })
-//         // this.setState(() => ({
-//         //     name: '',
-//         //     description: ''
-//         // }))
-//     }
-//
-//     render() {
-//         return (
-
-//         )
-//     }
-//
-// }
-
-
-//export default TaskAdd;
-
 const mapStateToProps = (state) => ({
-    tasks: state.tasks.tasks
+    tasksList: state.tasksList.tasksList
 })
 
 const mapDispatchToProps = (dispatch) => ({
@@ -77,10 +16,10 @@ const mapDispatchToProps = (dispatch) => ({
 })
 
 
-const TaskAddComponent = ({tasks, dispatchOnAddNewTask}) => {
+const TaskAddComponent = ({tasksList, dispatchOnAddNewTask}) => {
 
     const [task, setTask] = useState({
-        id: tasks.length,
+        id: 0,
         name: '',
         description: '',
         completed: false
@@ -104,6 +43,10 @@ const TaskAddComponent = ({tasks, dispatchOnAddNewTask}) => {
 
     const onSubmit = (e) => {
         e.preventDefault()
+        setTask(prevTask => ({
+            ...prevTask,
+            id: tasksList.length + 1
+        }))
         dispatchOnAddNewTask(task)
     }
 

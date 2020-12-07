@@ -1,25 +1,22 @@
 import React, {useState} from 'react'
 import classNames from 'classnames/bind'
 import styles from './TaskAdd.module.scss'
-import { addNewTask } from "../../actions/newTask";
 import { connect } from "react-redux";
-
+import {createTask} from "../../../actions/actions";
 
 const cx = classNames.bind(styles)
 
-const mapStateToProps = (state) => ({
-    tasksList: state.tasksList.tasksList
-})
 
 const mapDispatchToProps = (dispatch) => ({
-    dispatchOnAddNewTask: (newTask) => dispatch(addNewTask(newTask))
+    dispatchOnAddNewTask: (newTask) => dispatch(createTask(newTask))
 })
 
 
-const TaskAddComponent = ({tasksList, dispatchOnAddNewTask}) => {
+const TaskAddComponent = ({dispatchOnAddNewTask}) => {
+
 
     const [task, setTask] = useState({
-        id: 0,
+        id: Date.now(),
         name: '',
         description: '',
         completed: false
@@ -43,10 +40,6 @@ const TaskAddComponent = ({tasksList, dispatchOnAddNewTask}) => {
 
     const onSubmit = (e) => {
         e.preventDefault()
-        setTask(prevTask => ({
-            ...prevTask,
-            id: tasksList.length + 1
-        }))
         dispatchOnAddNewTask(task)
     }
 
@@ -79,4 +72,4 @@ const TaskAddComponent = ({tasksList, dispatchOnAddNewTask}) => {
     )
 }
 
-export const TaskAdd = connect(mapStateToProps, mapDispatchToProps)(TaskAddComponent)
+export const TaskAdd = connect(null, mapDispatchToProps)(TaskAddComponent)

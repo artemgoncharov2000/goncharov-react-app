@@ -1,31 +1,38 @@
 .container {
     position: relative;
-    width: 437px;
-    height: 347px;
+    width: 673px;
+    height: 200px;
     border-style: solid;
     border-color: #ACABAB;
     border-width: thin;
     margin-bottom: 20px;
-    border-radius: 10px;
+    border-radius: 5px;
     /* header */
     .header {
         position: relative;
-
-        border-radius: 10px 10px 0 0;
-        width: 437px;
-        height: 70px;
-        background-color: rgb(219, 76, 63);
+        width: 673px;
+        height: 55px;
+        border-bottom-color: #ACABAB;
+        border-bottom-width: thin;
+        border-bottom-style: solid;
 
         .nameInput {
             position: absolute;
-            top: 16px;
-            left: 16px;
+            top: 9px;
+            left: 11px;
             display: block;
 
             border-radius: 10px;
             border-style: none;
             width: 400px;
             height: 38px;
+
+            font-weight: bolder;
+            font-size: 24px;
+            color: black;
+            text-align: left;
+            vertical-align: middle;
+            line-height: 45px;
         }
     }
 
@@ -33,17 +40,17 @@
     /* body */
     .body {
         position: relative;
-        width: 400px;
-        height: 190px;
+        width: 673px;
+        height: 83px;
 
         .textArea {
             position: absolute;
-            top: 16px;
-            left: 16px;
-            min-width: 400px;
-            max-width: 400px;
-            min-height: 150px;
-            max-height: 150px;
+            top: 4px;
+            left: 11px;
+            min-width: 647px;
+            max-width: 647px;
+            min-height: 65px;
+            max-height: 65px;
             resize: none;
             border: none;
 
@@ -53,25 +60,26 @@
     /* footer */
     .footer {
         position: relative;
-        width: 437px;
-        height: 88px;
+        width: 673px;
+        height: 69px;
 
         .addButton {
             position: absolute;
+            bottom: 11px;
+            right: 15px;
             width: 137px;
             height: 49px;
+
             border-radius: 15px;
             border: none;
             background-color: rgb(219, 76, 63);
-
-            font-weight: bolder;
-            color: white;
-            text-align: center;
-            top: 50%;
-            left: 50%;
-            margin-right: -50%;
-            transform: translate(-50%, -50%);
             cursor: pointer;
+
+            color: white;
+            font-weight: bolder;
+            text-align: center;
+            text-decoration: none;
+
         }
     }
 

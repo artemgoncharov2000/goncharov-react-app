@@ -10,17 +10,10 @@ const mapDispatchToProps = (dispatch) => ({
     dispatchOnAddNewProject: (newProject) => dispatch(createProject(newProject))
 });
 
-const ProjectAddComponent = ({dispatchOnAddNewProject}) => {
-
-    // const ID = function () {
-    //     // Math.random should be unique because of its seeding algorithm.
-    //     // Convert it to base 36 (numbers + letters), and grab the first 9 characters
-    //     // after the decimal.
-    //     return '_' + Math.random().toString(36).substr(2, 9);
-    // };
-
+const ProjectAddComponent = ({dispatchOnAddNewProject, projectsSize}) => {
+    uuidv4()
     const [project, setProject] = useState({
-        id: '1',
+        id: uuidv4(),
         name: '',
     });
 
@@ -39,6 +32,10 @@ const ProjectAddComponent = ({dispatchOnAddNewProject}) => {
             id: uuidv4(),
         }))
         dispatchOnAddNewProject(project)
+        setProject(prevState => ({
+            ...prevState,
+            name: ''
+        }))
     };
 
 

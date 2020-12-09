@@ -26,7 +26,7 @@ Task.fields = {
     name: attr(),
     description: attr(),
     completed: attr(),
-    projectId: fk({
+    project: fk({
         to: 'Project',
         as: 'project',
         relatedName: 'tasks'

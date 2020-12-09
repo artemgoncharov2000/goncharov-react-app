@@ -12,13 +12,14 @@ const mapDispatchToProps = (dispatch) => ({
 })
 
 
-const TaskAddComponent = ({dispatchOnAddNewTask}) => {
-
+const TaskAddComponent = ({dispatchOnAddNewTask, projectId, tasksSize}) => {
+    uuidv4()
     const [task, setTask] = useState({
-        id: '',
+        id: uuidv4(),
         name: '',
         description: '',
-        completed: false
+        completed: false,
+        projectId: projectId,
     })
 
     const onNameChange = (e) => {
@@ -44,6 +45,11 @@ const TaskAddComponent = ({dispatchOnAddNewTask}) => {
             id: uuidv4()
         }))
         dispatchOnAddNewTask(task)
+        setTask(prevTask => ({
+            ...prevTask,
+            name: '',
+            description: ''
+        }))
     }
 
     return (

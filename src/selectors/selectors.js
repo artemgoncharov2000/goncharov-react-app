@@ -1,7 +1,6 @@
-//import {schema} from "../orm/schema";
 import {createSelector} from "redux-orm";
 import orm from '../orm/orm'
-//export const ormSelector = state => state.orm
+
 
 export const tasks = createSelector(
     orm,

@@ -13,7 +13,7 @@ const mapStateToProps = (state) => ({
 });
 
 const ProjectsComponent = ({projects}) => {
-    console.log(projects)
+    console.log('projectSize: ' + projects.length)
     return (
         <div className={cx('container')}>
             <div className={cx('header')}>
@@ -33,7 +33,7 @@ const ProjectsComponent = ({projects}) => {
                         </div>
                     )})
                 }
-                <ProjectAdd/>
+                <ProjectAdd projectsSize={projects.length}/>
             </div>
         </div>
     )

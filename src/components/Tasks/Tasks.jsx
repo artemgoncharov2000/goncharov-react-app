@@ -10,15 +10,12 @@ import {Link} from "react-router-dom";
 const cx = classNames.bind(styles);
 
 const mapStateToProps = (state) => {
-   // console.log(state)
     return ({
         tasks: tasks(state)
     });
 
 }
 const TasksListComponent = ({match, tasks}) => {
-    //console.log(match)
-    //console.log(tasks)
     return (
         <div className={cx('container')}>
             <div className={cx('header')}>
@@ -30,19 +27,19 @@ const TasksListComponent = ({match, tasks}) => {
                 <h3>ProjectName</h3>
                 <div></div>
             </div>
-            {/*<div className={cx('sideBar')}>*/}
-            {/*</div>*/}
             <div className={cx('body')}>
                 {
-                    tasks.map((task, i) => (
+                    tasks.filter(task => task.projectId === match.params.projectId).map((task, i) => (
                         <Task
                             key={i}
                             task={task}
-
                         />
                     ))
                 }
-                <TaskAdd/>
+                <TaskAdd
+                    tasksSize={tasks.length}
+                    projectId={match.params.projectId}
+                />
             </div>
 
         </div>

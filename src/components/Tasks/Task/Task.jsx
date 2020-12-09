@@ -22,14 +22,12 @@ const TaskComponent = ({
     return (
         <div className={cx('container')}>
             <div className={cx('header')}>
-                {/*<div className={cx('id')}>{task.id + 1}</div>*/}
                 <div className={cx('name')}>{task.name}</div>
             </div>
             <div className={cx('body')}>
                 <p className={cx('description')}>{task.description}</p>
             </div>
             <div className={cx('footer')}>
-                {/*<div className={cx('status')}>{task.completed ? 'Completed' : 'Not completed'}</div>*/}
                 <button className={cx('doneButton')} onClick={onStatusChange}>Done!</button>
             </div>
         </div>

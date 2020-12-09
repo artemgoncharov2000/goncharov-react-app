@@ -11,7 +11,7 @@ class Task extends Model {
                 Task.create(payload);
                 break;
             case COMPLETE_TASK:
-                Task.withId(payload).set('completed', true);
+                Task.withId(payload).delete();
                 break;
         }
 

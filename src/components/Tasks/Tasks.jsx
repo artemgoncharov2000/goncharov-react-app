@@ -5,6 +5,7 @@ import classNames from 'classnames/bind';
 import styles from './Tasks.module.scss';
 import {connect} from "react-redux";
 import {tasks} from "../../selectors/selectors";
+import {Link} from "react-router-dom";
 
 const cx = classNames.bind(styles);
 
@@ -16,15 +17,21 @@ const mapStateToProps = (state) => {
 
 }
 const TasksListComponent = ({match, tasks}) => {
-
+    //console.log(match)
+    //console.log(tasks)
     return (
         <div className={cx('container')}>
             <div className={cx('header')}>
-                <button>Back</button>
-                <h3 className={cx('projectName')}>ProjectName</h3>
+                <Link to={'/projects'}>
+                    <a>
+                        Back
+                    </a>
+                </Link>
+                <h3>ProjectName</h3>
+                <div></div>
             </div>
-            <div className={cx('sideBar')}>
-            </div>
+            {/*<div className={cx('sideBar')}>*/}
+            {/*</div>*/}
             <div className={cx('body')}>
                 {
                     tasks.map((task, i) => (
@@ -35,7 +42,7 @@ const TasksListComponent = ({match, tasks}) => {
                         />
                     ))
                 }
-                <TaskAdd projectId={match.params.projectId}/>
+                <TaskAdd/>
             </div>
 
         </div>

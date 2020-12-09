@@ -6,7 +6,7 @@ import orm from '../orm/orm'
 export const tasks = createSelector(
     orm,
     (session) => {
-        return session.Task.all().toModelArray();
+        return session.Task.all().toRefArray();
     }
 );
 
@@ -20,6 +20,6 @@ export const project = createSelector(
 export const projects = createSelector(
     orm,
     session => {
-        return session.Project.all().toModelArray()
+        return session.Project.all().toRefArray()
     }
 )

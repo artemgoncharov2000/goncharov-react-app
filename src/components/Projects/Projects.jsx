@@ -17,7 +17,7 @@ const ProjectsComponent = ({projects}) => {
     return (
         <div className={cx('container')}>
             <div className={cx('header')}>
-                <h3 className={cx('projectName')}>TheBestToDoList</h3>
+                <h3>TheBestToDoList</h3>
             </div>
             <div className={cx('body')}>
                 {
@@ -26,7 +26,9 @@ const ProjectsComponent = ({projects}) => {
                         return(
                         <div key={i} className={cx('projectPreview')}>
                             <Link to={`/projects/${project.id}`}>
-                                {project.name}
+                                <a>
+                                    {project.name}
+                                </a>
                             </Link>
                         </div>
                     )})

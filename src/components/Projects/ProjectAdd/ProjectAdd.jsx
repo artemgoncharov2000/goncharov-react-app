@@ -3,7 +3,7 @@ import classNames from 'classnames/bind';
 import styles from './ProjectAdd.module.scss';
 import {createProject} from "../../../actions/actions";
 import {connect} from "react-redux";
-
+import { v4 as uuidv4 } from 'uuid';
 const cx = classNames.bind(styles);
 
 const mapDispatchToProps = (dispatch) => ({
@@ -20,7 +20,7 @@ const ProjectAddComponent = ({dispatchOnAddNewProject}) => {
     // };
 
     const [project, setProject] = useState({
-        id: Date.now(),
+        id: '1',
         name: '',
     });
 
@@ -34,6 +34,10 @@ const ProjectAddComponent = ({dispatchOnAddNewProject}) => {
 
     const onSubmit = (e) => {
         e.preventDefault();
+        setProject(prevProj => ({
+            ...prevProj,
+            id: uuidv4(),
+        }))
         dispatchOnAddNewProject(project)
     };
 

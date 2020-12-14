@@ -1,28 +1,25 @@
 import React, {useState} from 'react'
 import classNames from 'classnames/bind'
 import styles from './TaskAdd.module.scss'
-import { addNewTask } from "../../actions/newTask";
 import { connect } from "react-redux";
-
-
+import {createTask} from "../../../actions/actions";
+import { v4 as uuidv4 } from 'uuid';
 const cx = classNames.bind(styles)
 
-const mapStateToProps = (state) => ({
-    tasksList: state.tasksList.tasksList
-})
 
 const mapDispatchToProps = (dispatch) => ({
-    dispatchOnAddNewTask: (newTask) => dispatch(addNewTask(newTask))
+    dispatchOnAddNewTask: (newTask) => dispatch(createTask(newTask))
 })
 
 
-const TaskAddComponent = ({tasksList, dispatchOnAddNewTask}) => {
-
+const TaskAddComponent = ({dispatchOnAddNewTask, projectId, tasksSize}) => {
+    uuidv4()
     const [task, setTask] = useState({
-        id: 0,
+        id: uuidv4(),
         name: '',
         description: '',
-        completed: false
+        completed: false,
+        projectId: projectId,
     })
 
     const onNameChange = (e) => {
@@ -45,9 +42,14 @@ const TaskAddComponent = ({tasksList, dispatchOnAddNewTask}) => {
         e.preventDefault()
         setTask(prevTask => ({
             ...prevTask,
-            id: tasksList.length + 1
+            id: uuidv4()
         }))
         dispatchOnAddNewTask(task)
+        setTask(prevTask => ({
+            ...prevTask,
+            name: '',
+            description: ''
+        }))
     }
 
     return (
@@ -79,4 +81,4 @@ const TaskAddComponent = ({tasksList, dispatchOnAddNewTask}) => {
     )
 }
 
-export const TaskAdd = connect(mapStateToProps, mapDispatchToProps)(TaskAddComponent)
+export const TaskAdd = connect(null, mapDispatchToProps)(TaskAddComponent)

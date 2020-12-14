@@ -1,81 +1,82 @@
-import React from 'react'
+import React, {useState} from 'react'
 import classNames from 'classnames/bind'
 import styles from './TaskAdd.module.scss'
+import { addNewTask } from "../../actions/newTask";
+import { connect } from "react-redux";
+
 
 const cx = classNames.bind(styles)
 
-class TaskAdd extends React.Component {
+const mapStateToProps = (state) => ({
+    tasksList: state.tasksList.tasksList
+})
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            name: '',
-            description: ''
-        }
+const mapDispatchToProps = (dispatch) => ({
+    dispatchOnAddNewTask: (newTask) => dispatch(addNewTask(newTask))
+})
 
-        this.handleNameChange = this.handleNameChange.bind(this)
-        this.handleDescriptionChange = this.handleDescriptionChange.bind(this)
-        this.handleSubmit = this.handleSubmit.bind(this)
-    }
 
-    handleNameChange(event) {
-        const val = event.target.value
-        this.setState(() => ({
-            name: val
+const TaskAddComponent = ({tasksList, dispatchOnAddNewTask}) => {
+
+    const [task, setTask] = useState({
+        id: 0,
+        name: '',
+        description: '',
+        completed: false
+    })
+
+    const onNameChange = (e) => {
+        e.persist()
+        setTask(prevTask => ({
+            ...prevTask,
+            name: e.target.value
         }))
     }
 
-    handleDescriptionChange(event) {
-        const val = event.target.value
-        this.setState(() => ({
-            description: val
+    const onDescriptionChange = (e) => {
+        e.persist()
+        setTask(prevTask => ({
+            ...prevTask,
+            description: e.target.value
         }))
     }
 
-    handleSubmit(event) {
-        event.preventDefault()
-        this.props.addNewTask({
-            id: this.props.tasks.length + 1,
-            name: this.state.name,
-            description: this.state.description,
-            completed: false
-        })
-        this.setState(() => ({
-            name: '',
-            description: ''
+    const onSubmit = (e) => {
+        e.preventDefault()
+        setTask(prevTask => ({
+            ...prevTask,
+            id: tasksList.length + 1
         }))
+        dispatchOnAddNewTask(task)
     }
 
-    render() {
-        return (
-            <div className={cx('container')}>
-                <form  className={cx('createNewTask')} onSubmit={this.handleSubmit}>
-                    <div className={cx('header')}>
-                            <input
-                                className={cx('nameInput')}
-                                value={this.state.name}
-                                placeholder="Enter the name of your task"
-                                onChange={this.handleNameChange}
-                                type="text"
-                            />
-                    </div>
-                    <div className={cx('body')}>
+    return (
+        <div className={cx('container')}>
+            <form  className={cx('createNewTask')} onSubmit={onSubmit}>
+                <div className={cx('header')}>
+                    <input
+                        className={cx('nameInput')}
+                        value={task.name}
+                        placeholder="Enter the name of your task"
+                        onChange={onNameChange}
+                        type="text"
+                    />
+                </div>
+                <div className={cx('body')}>
                         <textarea
                             className={cx('textArea')}
                             placeholder="Enter the description of your task"
-                            value={this.state.description}
-                            onChange={this.handleDescriptionChange}
+                            value={task.description}
+                            onChange={onDescriptionChange}
                         />
-                    </div>
-                    <div className={cx('footer')}>
-                        <button className={cx('addButton')} type="submit">Add</button>
-                    </div>
+                </div>
+                <div className={cx('footer')}>
+                    <button className={cx('addButton')} type="submit">Add</button>
+                </div>
 
-                </form>
-            </div>
-        )
-    }
-
+            </form>
+        </div>
+    )
 }
 
-export default TaskAdd;
+export const TaskAdd = connect(mapStateToProps, mapDispatchToProps)(TaskAddComponent)

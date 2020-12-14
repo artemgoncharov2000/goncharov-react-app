@@ -1,11 +1,15 @@
 import React from 'react'
-import Task from "../Task/Task";
-import './TasksList.css'
-import TaskAdd from "../TaskAdd/TaskAdd";
+import Task from "../Task/Task"
+import TaskAdd from "../TaskAdd/TaskAdd"
+import classNames from 'classnames/bind'
+import styles from './TasksList.module.scss'
+
+const cx = classNames.bind(styles)
+
 class TasksList extends React.Component {
 
     constructor(props) {
-        super(props);
+        super(props)
         this.state = {
             tasks: []
         }
@@ -30,10 +34,9 @@ class TasksList extends React.Component {
 
     render() {
         return (
-            <div className="tasks-container">
+            <div className={cx('container')}>
                 {this.state.tasks.map((it, i) => (
                     <Task
-                        className="task"
                         setCompleted={this.setCompleted}
                         key={i}
                         index={i}

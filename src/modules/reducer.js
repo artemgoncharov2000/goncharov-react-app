@@ -1,18 +1,24 @@
-import {CREATE_PROJECT, DELETE_PROJECT, LOAD_PROJECTS_SUCCESS} from "./actions";
+import {types as t} from "./actions";
 import keyBy from 'lodash/keyBy';
 
 const initialState = null;
 
 export default (state = initialState, action) => {
     switch (action.type) {
-        case LOAD_PROJECTS_SUCCESS: {
+        case t.LOAD_PROJECTS_SUCCESS: {
             const { projects } = action;
             const projectsByKey = keyBy(projects, 'id');
             return {
                 projects: projectsByKey,
             }
         }
-        case CREATE_PROJECT: {
+        case t.LOAD_PROJECTS_FAILURE: {
+            const { error } = action;
+            console.log('Failed to load');
+            console.log('Reason: ', action.error);
+            return state;
+        }
+        case t.CREATE_PROJECT: {
             const { project, id } = action;
             const projects = {...state.projects};
             projects[id] = project;
@@ -22,7 +28,7 @@ export default (state = initialState, action) => {
                 projects: projects,
             }
         }
-        case DELETE_PROJECT: {
+        case t.DELETE_PROJECT: {
             const { id } = action;
             const projects = {...state.projects};
             projects[id] = undefined;

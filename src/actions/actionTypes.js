@@ -1,5 +1,0 @@
-export const SELECT_PROJECT = 'SELECT_PROJECT';
-export const CREATE_PROJECT = 'CREATE_PROJECT';
-export const COMPLETE_TASK = 'COMPLETE_TASK';
-export const CREATE_TASK = 'CREATE_TASK';
-

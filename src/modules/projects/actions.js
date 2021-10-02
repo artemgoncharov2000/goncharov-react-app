@@ -2,12 +2,12 @@
 export const types = {
     CREATE_PROJECT: 'CREATE_PROJECT',
     DELETE_PROJECT: 'DELETE_PROJECT',
-    LOAD_PROJECTS: 'LOAD_PROJECTS',
+    LOAD_PROJECTS_REQUEST: 'LOAD_PROJECTS',
     LOAD_PROJECTS_SUCCESS: 'LOAD_PROJECTS_SUCCESS',
     LOAD_PROJECTS_FAILURE: 'LOAD_PROJECTS_FAILURE'
 }
 
-export const loadProjects = () => ({type: types.LOAD_PROJECTS});
+export const loadProjects = () => ({type: types.LOAD_PROJECTS_REQUEST});
 
 export const loadProjectsSuccess = (projects) =>
     ({

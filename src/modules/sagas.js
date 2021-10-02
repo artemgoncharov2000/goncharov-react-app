@@ -1,20 +1,6 @@
-import { takeEvery, put, call } from 'redux-saga/effects';
-import * as api from '../lib/api-client';
-import {loadProjectsFailure, loadProjectsSuccess, types as t} from "./actions";
+import projectsSaga from "./projects/sagas";
+import { fork } from 'redux-saga/effects';
 
-function* loadProjectsSaga() {
-    try {
-        const res = yield call(api.getProjects);
-        const projects = res.data;
-
-        yield put(loadProjectsSuccess(projects));
-    } catch (error) {
-        yield put(loadProjectsFailure(error.toString()));
-    }
+export default function* rootSaga() {
+    yield fork(projectsSaga);
 }
-
-function* projectsSaga() {
-    yield takeEvery(t.LOAD_PROJECTS_REQUEST, loadProjectsSaga);
-}
-
-export default projectsSaga;

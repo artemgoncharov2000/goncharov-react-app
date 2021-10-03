@@ -1,14 +1,21 @@
 import {types as t} from "./actions";
 import keyBy from 'lodash/keyBy';
 
-const initialState = null;
+const initialState = {
+    byId: null,
+    isLoaded: false,
+};
 
 export default (state = initialState, action) => {
     switch (action.type) {
         case t.LOAD_PROJECTS_SUCCESS: {
             const { projects } = action;
 
-            return { byId: keyBy(projects, 'id') };
+            return {
+                ...state,
+                byId: keyBy(projects, 'id'),
+                isLoaded: true,
+            };
         }
         case t.LOAD_PROJECTS_FAILURE: {
             const { error } = action;
@@ -21,7 +28,7 @@ export default (state = initialState, action) => {
             const projects = {...state.byId};
             projects[project.id] = project;
 
-            return { byId: projects };
+            return { ...state, byId: projects };
         }
         case t.DELETE_PROJECT: {
             const { id } = action;
@@ -32,6 +39,24 @@ export default (state = initialState, action) => {
                 ...state,
                 projects: projects
             }
+        }
+        case t.CREATE_TASK: {
+            const { task, projectId } = action;
+            const project = state.byId[projectId];
+
+            const updatedProject = {
+                ...project,
+                tasks: [...project.tasks, task],
+            }
+
+            return {
+                ...state,
+                byId: {
+                    ...state.byId,
+                    [projectId]: updatedProject,
+                }
+            }
+
         }
         default:
             return state;

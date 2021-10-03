@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import CreateProject from './ProjectAdd/CreateProject';
 import {Link} from "react-router-dom";
 import {loadProjects} from "../../modules/projects/actions";
-import {selectProjects} from "../../modules/projects/selectors";
+import {selectIsLoaded, selectProjects} from "../../modules/projects/selectors";
 import map from 'lodash/map';
 import {setCurrentProject} from "../../modules/currentProject/actions";
 
@@ -13,10 +13,13 @@ const cx = classNames.bind(styles);
 
 const Projects = () => {
     const projects = useSelector(selectProjects);
+    const isLoaded = useSelector(selectIsLoaded);
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(loadProjects());
+        if (!isLoaded) {
+            dispatch(loadProjects());
+        }
     }, [])
 
     const onSelectProject = (projectId) => {

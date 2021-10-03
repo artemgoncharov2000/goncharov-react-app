@@ -1,27 +1,31 @@
 import React, {useState} from 'react';
 import {Task} from "./Task/Task";
-import {TaskAdd} from "./TaskAdd/TaskAdd";
+import CreateTask from "./TaskAdd/TaskAdd";
 import classNames from 'classnames/bind';
 import styles from './Tasks.module.scss';
-import {connect, useDispatch, useSelector} from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {Link} from "react-router-dom";
-import {selectCurrentProject} from "../../modules/currentProject/selectors";
+import {createTask} from "../../modules/projects/actions";
+import {useParams} from 'react-router-dom';
 
 const cx = classNames.bind(styles);
 
 const Project = () => {
-    const project = useSelector(selectCurrentProject);
+    const { projectId } = useParams();
+
+    const project = useSelector((state) => state.projects.byId[projectId] ?? null);
     const dispatch = useDispatch();
 
-    const onBack = () => {
-        dispatch(selectCurrentProject(null));
+
+    const handleCreateTask = (task) => {
+        dispatch(createTask(task, project.id));
     }
 
     return (
         <div className={cx('container')}>
             <div className={cx('header')}>
                 <Link to={'/projects'}>
-                    <a onClick={onBack}>
+                    <a>
                         Back
                     </a>
                 </Link>
@@ -37,10 +41,7 @@ const Project = () => {
                         />
                     ))
                 }
-                {/*<TaskAdd*/}
-                {/*    tasksSize={tasks.length}*/}
-                {/*    projectId={match.params.projectId}*/}
-                {/*/>*/}
+                <CreateTask handleCreateTask={handleCreateTask}/>
             </div>
         </div>
     )

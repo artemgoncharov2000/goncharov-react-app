@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Task} from "./Task/Task";
+import Task from "./Task/Task";
 import CreateTask from "./TaskAdd/TaskAdd";
 import classNames from 'classnames/bind';
 import styles from './Tasks.module.scss';
@@ -29,8 +29,7 @@ const Project = () => {
                         Back
                     </a>
                 </Link>
-                <h3>ProjectName</h3>
-                <div>{project.title}</div>
+                <h3>{project.title}</h3>
             </div>
             <div className={cx('body')}>
                 {

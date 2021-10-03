@@ -7,7 +7,6 @@ import {Link} from "react-router-dom";
 import {loadProjects} from "../../modules/projects/actions";
 import {selectIsLoaded, selectProjects} from "../../modules/projects/selectors";
 import map from 'lodash/map';
-import {setCurrentProject} from "../../modules/currentProject/actions";
 
 const cx = classNames.bind(styles);
 
@@ -22,10 +21,6 @@ const Projects = () => {
         }
     }, [])
 
-    const onSelectProject = (projectId) => {
-        dispatch(setCurrentProject(projects[projectId]));
-    }
-
     return (
         <div className={cx('container')}>
             <div className={cx('header')}>
@@ -37,7 +32,7 @@ const Projects = () => {
                         return(
                         <div key={i} className={cx('projectPreview')}>
                             <Link to={`/projects/${project.id}`}>
-                                <a onClick={() => onSelectProject(project.id)}>
+                                <a>
                                     {project.title}
                                 </a>
                             </Link>

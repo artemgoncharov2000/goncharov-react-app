@@ -5,33 +5,22 @@ import {connect} from "react-redux";
 
 const cx = classNames.bind(styles)
 
-const mapDispatchToProps = (dispatch) => ({
-    dispatchOnStatusChange: (taskId) => dispatch(completeTask(taskId))
-})
-
-const TaskComponent = ({
-                           task,
-                           dispatchOnStatusChange
-                       }) => {
-    const onStatusChange = (e) => {
-        e.preventDefault()
-        dispatchOnStatusChange(task.id)
-    }
+const Task = ({task}) => {
 
     return (
         <div className={cx('container')}>
             <div className={cx('header')}>
-                <div className={cx('name')}>{task.name}</div>
+                <div className={cx('name')}>{task.title}</div>
             </div>
             <div className={cx('body')}>
                 <p className={cx('description')}>{task.description}</p>
             </div>
             <div className={cx('footer')}>
-                <button className={cx('doneButton')} onClick={onStatusChange}>Done!</button>
+                <button className={cx('doneButton')} >Done!</button>
             </div>
         </div>
     )
 
 }
 
-export const Task = connect(null, mapDispatchToProps)(TaskComponent)
+export default Task;

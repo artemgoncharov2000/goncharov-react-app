@@ -7,10 +7,8 @@ export default (state = initialState, action) => {
     switch (action.type) {
         case t.LOAD_PROJECTS_SUCCESS: {
             const { projects } = action;
-            const projectsByKey = keyBy(projects, 'id');
-            return {
-                projects: projectsByKey,
-            }
+
+            return keyBy(projects, 'id');
         }
         case t.LOAD_PROJECTS_FAILURE: {
             const { error } = action;

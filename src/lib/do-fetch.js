@@ -1,4 +1,4 @@
-const END_POINT = 'localhost:3000';
+const END_POINT = 'http://localhost:3000';
 
 export function* doFetch({
     method,
@@ -7,7 +7,16 @@ export function* doFetch({
                          })
 {
     const fullPath = END_POINT + url;
-    let response = fetch(fullPath, {
-        method,
-    })
+
+    try {
+        let response = yield fetch(fullPath);
+        response = yield response.json()
+
+        return {data: response};
+    } catch (error) {
+        return error;
+    }
+
+
+
 }

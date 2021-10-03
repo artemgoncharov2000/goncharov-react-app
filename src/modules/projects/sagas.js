@@ -4,7 +4,7 @@ import {loadProjectsFailure, loadProjectsSuccess, types as t} from "./actions";
 
 function* loadProjectsSaga() {
     try {
-        const res = yield call(api.getProjects);
+        const res = yield api.getProjects();
         const projects = res.data;
 
         yield put(loadProjectsSuccess(projects));

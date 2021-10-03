@@ -1,13 +1,13 @@
 import React from 'react';
 import './App.css';
-import {Tasks} from "../Tasks/Tasks";
+// import {Tasks} from "../Tasks/Tasks";
 import {createStore, applyMiddleware} from "redux";
 import rootReducer from '../../modules/reducer';
 import createSagaMiddleware from 'redux-saga';
 import rootSaga from "../../modules/sagas";
 import {Provider} from 'react-redux'
 import {BrowserRouter, Switch, Route, Redirect} from "react-router-dom";
-import {Projects} from "../Projects/Projects";
+import Projects from "../Projects/Projects";
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -26,7 +26,7 @@ function App() {
                 <Provider store={store}>
                     <Switch>
                         <Route path={"/projects"} exact component={Projects}/>
-                        <Route path={"/projects/:projectId"} component={Tasks}/>
+                        {/*<Route path={"/projects/:projectId"} component={Tasks}/>*/}
                         <Redirect to="/projects"/>
                     </Switch>
                 </Provider>

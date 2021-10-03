@@ -19,12 +19,9 @@ export default (state = initialState, action) => {
         case t.CREATE_PROJECT: {
             const { project } = action;
             const projects = {...state.byId};
-
-            console.log('projects', projects);
             projects[project.id] = project;
 
             return { byId: projects };
-
         }
         case t.DELETE_PROJECT: {
             const { id } = action;

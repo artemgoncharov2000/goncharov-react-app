@@ -20,3 +20,9 @@ export const loadProjectsFailure = (error) =>
         type: types.LOAD_PROJECTS_FAILURE,
         error,
     });
+
+export const createProject = (project) =>
+    ({
+        type: types.CREATE_PROJECT,
+        project,
+    })

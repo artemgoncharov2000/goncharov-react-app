@@ -8,7 +8,7 @@ export default (state = initialState, action) => {
         case t.LOAD_PROJECTS_SUCCESS: {
             const { projects } = action;
 
-            return keyBy(projects, 'id');
+            return { byId: keyBy(projects, 'id') };
         }
         case t.LOAD_PROJECTS_FAILURE: {
             const { error } = action;
@@ -17,14 +17,14 @@ export default (state = initialState, action) => {
             return state;
         }
         case t.CREATE_PROJECT: {
-            const { project, id } = action;
-            const projects = {...state.projects};
-            projects[id] = project;
+            const { project } = action;
+            const projects = {...state.byId};
 
-            return {
-                ...state,
-                projects: projects,
-            }
+            console.log('projects', projects);
+            projects[project.id] = project;
+
+            return { byId: projects };
+
         }
         case t.DELETE_PROJECT: {
             const { id } = action;

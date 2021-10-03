@@ -1,16 +1,14 @@
-import React, {useEffect, useReducer} from "react";
+import React, { useEffect } from "react";
 import classNames from 'classnames/bind';
 import styles from './Projects.module.scss';
-import {connect, useDispatch, useSelector} from 'react-redux';
-// import {ProjectAdd} from './ProjectAdd/ProjectAdd';
+import { useDispatch, useSelector } from 'react-redux';
+import CreateProject from './ProjectAdd/CreateProject';
 import {Link} from "react-router-dom";
 import {loadProjects} from "../../modules/projects/actions";
 import {selectProjects} from "../../modules/projects/selectors";
 import map from 'lodash/map';
 
 const cx = classNames.bind(styles);
-
-
 
 const Projects = () => {
     const projects = useSelector(selectProjects);
@@ -20,7 +18,7 @@ const Projects = () => {
         dispatch(loadProjects());
     }, [])
 
-    console.log('projects', projects);
+   // console.log('projects', projects);
     return (
         <div className={cx('container')}>
             <div className={cx('header')}>
@@ -39,7 +37,7 @@ const Projects = () => {
                         </div>
                     )})
                 }
-                {/*<ProjectAdd projectsSize={projects.length}/>*/}
+                <CreateProject />
             </div>
         </div>
     )

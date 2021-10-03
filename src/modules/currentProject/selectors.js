@@ -1,1 +1,1 @@
-export const selectCurrentProject= (state) => state.currentProject ?? null;
+export const selectCurrentProject= (state) => state?.currentProject ?? null;

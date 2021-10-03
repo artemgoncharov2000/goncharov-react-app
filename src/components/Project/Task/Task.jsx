@@ -1,7 +1,6 @@
 import React from 'react'
 import classNames from 'classnames/bind'
 import styles from './Task.module.scss'
-import {completeTask} from "../../../actions/actions";
 import {connect} from "react-redux";
 
 const cx = classNames.bind(styles)

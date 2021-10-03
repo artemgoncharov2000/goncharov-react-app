@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-// import {Tasks} from "../Tasks/Tasks";
+import Project from "../Project/Project";
 import {createStore, applyMiddleware} from "redux";
 import rootReducer from '../../modules/reducer';
 import createSagaMiddleware from 'redux-saga';
@@ -26,7 +26,7 @@ function App() {
                 <Provider store={store}>
                     <Switch>
                         <Route path={"/projects"} exact component={Projects}/>
-                        {/*<Route path={"/projects/:projectId"} component={Tasks}/>*/}
+                        <Route path={"/projects/:projectId"} component={Project}/>
                         <Redirect to="/projects"/>
                     </Switch>
                 </Provider>

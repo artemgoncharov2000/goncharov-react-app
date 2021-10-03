@@ -2,7 +2,6 @@ import React, {useState} from 'react'
 import classNames from 'classnames/bind'
 import styles from './TaskAdd.module.scss'
 import { connect } from "react-redux";
-import {createTask} from "../../../actions/actions";
 import { v4 as uuidv4 } from 'uuid';
 const cx = classNames.bind(styles)
 

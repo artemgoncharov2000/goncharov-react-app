@@ -3,7 +3,7 @@ export const types = {
 
 }
 
-const setCurrentProject = (project) =>
+export const setCurrentProject = (project) =>
     ({
        type: types.SET_CURRENT_PROJECT,
        project,

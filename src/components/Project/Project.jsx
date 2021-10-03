@@ -4,7 +4,6 @@ import {TaskAdd} from "./TaskAdd/TaskAdd";
 import classNames from 'classnames/bind';
 import styles from './Tasks.module.scss';
 import {connect} from "react-redux";
-import {tasks} from "../../selectors/selectors";
 import {Link} from "react-router-dom";
 
 const cx = classNames.bind(styles);
@@ -15,7 +14,7 @@ const mapStateToProps = (state) => {
     });
 
 }
-const TasksListComponent = ({match, tasks}) => {
+const Project = ({match, tasks}) => {
     return (
         <div className={cx('container')}>
             <div className={cx('header')}>
@@ -46,4 +45,4 @@ const TasksListComponent = ({match, tasks}) => {
     )
 };
 
-export const Tasks = connect(mapStateToProps)(TasksListComponent);
+export default Project;

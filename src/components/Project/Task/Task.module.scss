@@ -1,80 +1,27 @@
 .container {
-    position: relative;
-    width: 673px;
-    height: 200px;
-    border-style: solid;
-    border-color: #ACABAB;
-    border-width: thin;
-    border-radius: 5px;
-    margin-top: 54px;
-    /* header */
-    .header {
-        position: relative;
-        width: 673px;
-        height: 55px;
-        border-bottom-color: #ACABAB;
-        border-bottom-width: thin;
-        border-bottom-style: solid;
-        .name {
-            position: absolute;
-            top: 9px;
-            left: 11px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 10px;
+    width: 650px;
 
-            width: 298px;
-            height: 45px;
+    border-bottom-style: solid;
+    border-bottom-color: #ACABAB;
+    border-bottom-width: thin;
 
-            font-weight: bolder;
-            font-size: 24px;
-            color: black;
-            text-align: left;
-            vertical-align: middle;
-            line-height: 45px;
-        }
-    }
+    .title {
+        display: flex;
+        align-items: center;
+        width: 298px;
+        height: 45px;
 
-    /* body */
-    .body {
-        position: relative;
-        width: 673px;
-        height: 83px;
-
-        .description {
-            position: absolute;
-            top: 16px;
-            left:  25px;
-
-            max-width: 386px;
-            height: 182px;
-
-            text-align: left;
-            word-wrap: break-word;
-        }
-    }
-
-    /* footer */
-    .footer {
-        position: relative;
-        width: 673px;
-        height: 69px;
-
-        .doneButton {
-            position: absolute;
-            bottom: 11px;
-            right: 15px;
-            width: 137px;
-            height: 49px;
-
-            border-radius: 15px;
-            border: none;
-            background-color: rgb(219, 76, 63);
-            cursor: pointer;
-
-            color: white;
-            font-weight: bolder;
-            text-align: center;
-            text-decoration: none;
-
-        }
+        padding-top: 6px;
+        margin-left: 15px;
+        font-size: 24px;
+        color: black;
+        text-align: left;
+        vertical-align: middle;
+        line-height: 45px;
     }
 }
 

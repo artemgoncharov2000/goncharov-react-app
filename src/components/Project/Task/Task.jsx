@@ -1,26 +1,18 @@
 import React from 'react'
 import classNames from 'classnames/bind'
 import styles from './Task.module.scss'
-import {connect} from "react-redux";
-
-const cx = classNames.bind(styles)
+import Checkbox from '../../../icons/checkbox.svg'
+import EmptyCheckbox from '../../../icons/empty-checkbox.svg';
+const cx = classNames.bind(styles);
 
 const Task = ({task}) => {
 
     return (
         <div className={cx('container')}>
-            <div className={cx('header')}>
-                <div className={cx('name')}>{task.title}</div>
-            </div>
-            <div className={cx('body')}>
-                <p className={cx('description')}>{task.description}</p>
-            </div>
-            <div className={cx('footer')}>
-                <button className={cx('doneButton')} >Done!</button>
-            </div>
+            <img src={ task.completed ? Checkbox : EmptyCheckbox } width={25} height={25} />
+            <div className={cx('title')}>{task.title}</div>
         </div>
     )
-
 }
 
 export default Task;
